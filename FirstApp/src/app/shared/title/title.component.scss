@@ -1,3 +1,34 @@
-.titleCointainer{
+.titleContainer{
     height: 10vh;
+    display: flex;
+ 
 }
+
+.titleCointainer h1 {
+    color: black;
+}
+
+.title{
+    text-align: center;
+    width: 90%;
+}
+
+.elements{
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.click {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+
+.fieldSearch{
+    position: absolute;
+    top: 7%;
+    right: 4%;
+}   
+
