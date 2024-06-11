@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, inject } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter, take } from 'rxjs';
+import {  Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +17,23 @@ export class SplashService {
  * Show the splash screen
  */
   show(): void {
-    this._document.body.classList.remove('splasShow');
+    let element = this._document.body.getElementsByClassName('splashScreen')[0];
+    element.classList.add('splashShow');
+    element.classList.remove('splashHide');
   }
 
   /**
    * Hide the splash screen
    */
   hide(): void {
-    this._document.body.classList.add('splashHide');
+    let element = this._document.body.getElementsByClassName('splashScreen')[0];
+    element.classList.add('splashHide');
+    element.classList.remove('splashShow');
   }
 
+  /**
+   * Sirve para mostrar el Splash Screen
+   */
   appInitializer() {
     this.show();
     setTimeout(() => {
