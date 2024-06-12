@@ -470,6 +470,13 @@ template {
 
 .splasShow {
   display: block;
+  overflow: hidden; /* Esto ocultará la barra de desplazamiento */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
+.splashShow::-webkit-scrollbar {
+  display: none; /* Chrome, Safari y Opera */
 }
 
 .splashHide {
@@ -485,4 +492,20 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// body {
+//   overflow: hidden; /* Esto oculta la barra de desplazamiento pero también bloquea el scroll */
+// }
+
+// body::-webkit-scrollbar {
+//   display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
+// }
+
+body.no-scrollbar {
+  overflow: hidden;
+}
+
+body.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari y Opera */
 }

@@ -20,6 +20,7 @@ export class SplashService {
     let element = this._document.body.getElementsByClassName('splashScreen')[0];
     element.classList.add('splashShow');
     element.classList.remove('splashHide');
+    document.body.classList.add('no-scrollbar');
   }
 
   /**
@@ -29,6 +30,7 @@ export class SplashService {
     let element = this._document.body.getElementsByClassName('splashScreen')[0];
     element.classList.add('splashHide');
     element.classList.remove('splashShow');
+    document.body.classList.remove('no-scrollbar');
   }
 
   /**
