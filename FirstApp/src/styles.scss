@@ -494,13 +494,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// body {
-//   overflow: hidden; /* Esto oculta la barra de desplazamiento pero también bloquea el scroll */
-// }
-
-// body::-webkit-scrollbar {
-//   display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit */
-// }
 
 body.no-scrollbar {
   overflow: hidden;

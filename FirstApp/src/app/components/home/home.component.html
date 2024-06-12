@@ -4,9 +4,15 @@
     </div>
     <div class="listContainer">
         @for (item of items; track $index) {
-            <div class="card">
+            <div class="card" (mouseenter)="showDescription($index)" (mouseleave)="hiddenDescription($index)" 
+            [ngClass]="{'mouseHover':mouseHover[$index]}">
+            <div class="imgContainer">
                 <img src="{{item.img}}" alt="">
+            </div>
+            <div class="otherContainer">
                 <p>{{item.title}}</p>
+                <p>$ {{item.price}}</p>
+            </div>    
             </div>
         }@empty {
             <h2>No hay elementos para mostrar...</h2>

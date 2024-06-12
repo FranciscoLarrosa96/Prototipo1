@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MaterialModule } from '../material.module';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-title',
@@ -10,9 +11,28 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './title.component.scss'
 })
 export class TitleComponent implements OnInit {
-  showInputSearch: boolean = false;
-  ngOnInit(): void {
+  fb = inject(FormBuilder);
+  searchForm!: FormGroup;
 
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm() {
+    
+    this.searchForm = this.fb.group({
+      search: [''],
+    });
+
+    this.searchForm.events
+      .pipe(
+        debounceTime(1000)
+      )
+      .subscribe(
+        (event) => {
+          console.log("🚀 ~ TitleComponent ~ createForm ~ searchForm:", event.source.value)
+        }
+      );
   }
 
 }

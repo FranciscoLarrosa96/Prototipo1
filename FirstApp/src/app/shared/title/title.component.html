@@ -1,9 +1,15 @@
 <div class="titleContainer">
+    <img class="logo" src="assets/logo/logo.png" alt="">
     <h1 class="title">
-        Vega
+        Tecno T
     </h1>
-    <div class="elements">
-       <img src="assets/logo/cart.svg" alt="">
-       <img src="assets/logo/user.svg" alt="">
-    </div>
+    <form [formGroup]="searchForm" class="formSearch">
+        <input matInput formControlName="search">
+        <mat-icon class="iconSearch">
+            search
+        </mat-icon>
+    </form>
+    <img class="icons" matTooltip="Ir carrito" [matTooltipPosition]="'below'" src="assets/logo/cart.svg" alt="">
+    <img class="icons" matTooltip="Cuenta" [matTooltipPosition]="'below'" src="assets/logo/user.svg" alt="">
+
 </div>

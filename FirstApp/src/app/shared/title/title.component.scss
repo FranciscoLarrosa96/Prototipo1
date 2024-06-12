@@ -1,36 +1,40 @@
-.titleContainer{
+.titleContainer {
     height: 10vh;
     display: flex;
-    background-color: #004F4F;
+    background-color: #810081;
+    justify-content: center;
 }
 
-.title{
+.title {
     text-align: center;
-    width: 90%;
-    color: #0FDCDC;
+    color: #FCAEF0;
 }
 
-.elements{
+.elements {
     width: 10%;
     display: flex;
     justify-content: space-between;
     margin-top: 12px;
 }
 
-.elements img{
+.elements img {
     width: 30px;
     cursor: pointer;
 }
 
-.click {
+.icons {
     cursor: pointer;
     height: 40px;
     width: 40px;
 }
 
-.fieldSearch{
-    position: absolute;
-    top: 7%;
-    right: 4%;
-}   
 
+
+
+.formSearch{
+    position: relative;
+}
+
+.iconSearch{
+    position: absolute;
+}
