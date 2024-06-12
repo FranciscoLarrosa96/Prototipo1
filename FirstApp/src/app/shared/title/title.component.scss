@@ -1,16 +1,13 @@
 .titleContainer{
     height: 10vh;
     display: flex;
- 
-}
-
-.titleCointainer h1 {
-    color: black;
+    background-color: #004F4F;
 }
 
 .title{
     text-align: center;
     width: 90%;
+    color: #0FDCDC;
 }
 
 .elements{
@@ -18,6 +15,11 @@
     display: flex;
     justify-content: space-between;
     margin-top: 12px;
+}
+
+.elements img{
+    width: 30px;
+    cursor: pointer;
 }
 
 .click {

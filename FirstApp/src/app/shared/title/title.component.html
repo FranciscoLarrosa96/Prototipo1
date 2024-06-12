@@ -3,19 +3,7 @@
         Vega
     </h1>
     <div class="elements">
-        <img matTooltip="Abrir carrito" [matTooltipPosition]="'below'" class="click" src="assets/icons/cart.png" alt="">
-        <img matTooltip="Login/Registro" [matTooltipPosition]="'below'" class="click" src="assets/icons/user.png" alt="">
-        <img matTooltip="Buscar..." [matTooltipPosition]="'below'" class="click" src="assets/icons/glass.png" alt="" (click)="showInputSearch = !showInputSearch">
-        @if(showInputSearch){
-        <mat-form-field class="fieldSearch" appearance="outline">
-            <mat-label>Ingresa tu busqueda...</mat-label>
-            <input matInput type="text" #inputSearch>
-            @if (inputSearch.value !== '') {
-            <button matSuffix mat-icon-button aria-label="Clear" (click)="inputSearch.value=''; showInputSearch = false">
-                <mat-icon>close</mat-icon>
-            </button>
-            }
-        </mat-form-field>
-        }
+       <img src="assets/logo/cart.svg" alt="">
+       <img src="assets/logo/user.svg" alt="">
     </div>
 </div>

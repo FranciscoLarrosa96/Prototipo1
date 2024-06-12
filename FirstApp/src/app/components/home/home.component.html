@@ -1,3 +1,16 @@
 <div class="homeContainer">
-    <h1>Main</h1>
+    <div class="filtros">
+        
+    </div>
+    <div class="listContainer">
+        @for (item of items; track $index) {
+            <div class="card">
+                <img src="{{item.img}}" alt="">
+                <p>{{item.title}}</p>
+            </div>
+        }@empty {
+            <h2>No hay elementos para mostrar...</h2>
+        }
+    </div>
+   
 </div>
