@@ -4,17 +4,18 @@
     </div>
     <div class="listContainer">
         @for (item of items; track $index) {
-        <div class="card" (mouseenter)="showDescription($index)" (mouseleave)="hiddenDescription($index)" [ngClass]="{'mouseHover':mouseHover[$index]}">
+        <div [routerLink]="['/product/'+item.id]" class="card" (mouseenter)="showDescription($index)"
+            (mouseleave)="hiddenDescription($index)" [ngClass]="{'mouseHover':mouseHover[$index]}">
             <div class="imgContainer">
                 <img src="{{item.img}}" alt="">
             </div>
             <div class="otherContainer">
                 <p class="titleProduct">{{item.title}}</p>
                 @if(item.review){
-                <!-- //TODO: Mostrar estrellas -->
-                <p>REVIEW</p>
+                <p class="review"></p>
                 }
                 <p class="price">$ {{item.price | number}}</p>
+                <p class="cuotas">en 6 cuotas de $ {{(item.price * 1.33) / 6 | number:'1.0-0'}}</p>
                 @if(item.price > 30000){
                 <p class="free">Envio gratis</p>
                 }

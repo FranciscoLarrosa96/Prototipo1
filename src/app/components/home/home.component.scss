@@ -9,7 +9,7 @@
     transition: box-shadow 0.3s ease;
     cursor: pointer;
     background-color: #fff;
-    height: 450px;
+    height: 480px;
     max-height: 530px;
     width: 284px;
     max-width: 284px;
@@ -23,7 +23,7 @@
     width: 880px;
     max-width: 900px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1rem;
     margin-top: 5rem;
 }
@@ -61,6 +61,7 @@
 
 .titleProduct{
     font-size: 14px;
+    
 }
 
 .free{
@@ -70,4 +71,20 @@
 
 .price{
     font-size: 24px;
+}
+
+
+.cuotas{
+    font-size: 14px;
+}
+
+.cuotas , .price{
+    margin: 0;
+}
+
+.review::before{
+    content: '★';
+    color: #3483FA;
+    font-size: 20px;
+    margin-right: 5px;
 }

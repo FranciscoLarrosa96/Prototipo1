@@ -1,13 +1,17 @@
 .titleContainer {
     height: 10vh;
     display: flex;
-    background-color: #810081;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(164deg, rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 0%, rgba(47, 125, 198, 1) 0%, rgba(110, 9, 121, 1) 68%);
     justify-content: center;
 }
 
 .title {
     text-align: center;
     color: #FCAEF0;
+    font-family: "Jockey One", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .elements {
@@ -31,10 +35,30 @@
 
 
 
-.formSearch{
+.formSearch {
     position: relative;
+    width: 11.5%;
 }
 
-.iconSearch{
+.iconSearch {
     position: absolute;
+    top: 0px;
+    right: -6px;
+    padding-top: 2px;
+}
+
+.iconSearch::before{
+    content: "";
+    display: block;
+    height: 20px;
+    border-left: 1px solid #e6e6e6;
+    position: absolute;
+    top: 3.5px;
+}
+
+.inputSearch{
+    width: 100%;
+    border-radius: 4px;
+    padding: 4px;
+    border-color: rgb(233 20 20 / 0%);
 }

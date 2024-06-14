@@ -7,6 +7,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/home/home.component').then(component => component.HomeComponent)
     },
     {
+        path: 'product/:id',
+        loadComponent: () => import('./components/product/product.component').then(component => component.ProductComponent)
+    },
+    {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
