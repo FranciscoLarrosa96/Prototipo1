@@ -11,7 +11,7 @@ import { debounceTime } from 'rxjs';
   styleUrl: './title.component.scss'
 })
 export class TitleComponent implements OnInit {
-  fb = inject(FormBuilder);
+  fb:FormBuilder = inject(FormBuilder);
   searchForm!: FormGroup;
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class TitleComponent implements OnInit {
         debounceTime(1000)
       )
       .subscribe(
-        (event) => {
+        (event: { source: { value: any; }; }) => {
           console.log("🚀 ~ TitleComponent ~ createForm ~ searchForm:", event.source.value)
         }
       );
