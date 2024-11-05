@@ -38,7 +38,7 @@ export class HomeComponent {
       title: 'Mother A620M-K',
       description: '',
       price: 1100000,
-      
+      review: {stars:5,description :'asd'}
     },
     {
       id: '3',

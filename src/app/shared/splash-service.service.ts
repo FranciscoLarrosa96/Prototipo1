@@ -7,7 +7,6 @@ import {  Router } from '@angular/router';
 })
 export class SplashService {
 
-  private _router = inject(Router);
 
   constructor(@Inject(DOCUMENT) private _document: any) {
     this.appInitializer();
