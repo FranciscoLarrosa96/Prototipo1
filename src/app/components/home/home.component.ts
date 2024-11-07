@@ -3,12 +3,13 @@ import { Product } from '../../interfaces/product.interface';
 import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../../shared/material.module';
 register();
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,MaterialModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   schemas: [

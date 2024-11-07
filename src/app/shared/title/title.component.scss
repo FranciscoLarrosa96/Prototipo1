@@ -1,32 +1,21 @@
-// First Mobile: 320px
-// Second Mobile: 375px
-// Tablet: 768px
-// Desktop: 1024px
-// Large Desktop: 1440px
-// Extra Large Desktop: 1920px
 
-.title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-
-  @media (min-width: 375px) {
-    font-size: 1.75rem;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 2.25rem;
-  }
-
-  @media (min-width: 1440px) {
-    font-size: 2.5rem;
-  }
-
-  @media (min-width: 1920px) {
-    font-size: 2.75rem;
-  }
+.titleContainer{
+  height: 10vh;
+  background-image: url('../../../assets/img/titleBackground.svg');
+  background-repeat: no-repeat;
+  background-size: 99%;
+  background-position: center -90px;
 }
+
+.header {
+  position: fixed;
+  box-shadow: 1px 4px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 4px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 4px 5px 0px rgba(0,0,0,0.75);
+}
+
+.switchTheme {
+  position: absolute;
+  right: 0;
+}
+

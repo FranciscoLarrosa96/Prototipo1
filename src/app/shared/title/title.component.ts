@@ -1,7 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, HostBinding, OnInit, effect, inject, signal } from '@angular/core';
 import { MaterialModule } from '../material.module';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import { CheckWindowsSiceService } from '../services/check-windows-sice.service';
+
 
 @Component({
   selector: 'app-title',
@@ -11,15 +13,36 @@ import { debounceTime } from 'rxjs';
   styleUrl: './title.component.scss'
 })
 export class TitleComponent implements OnInit {
-  fb:FormBuilder = inject(FormBuilder);
+  fb: FormBuilder = inject(FormBuilder);
   searchForm!: FormGroup;
+  switchTheme = new FormControl(false);
+  darkMode = signal(false);
+  toggleSideNav = signal(false);
+  deviceType:string = '';
+  private _checkWindowsSice = inject(CheckWindowsSiceService);
+
+  /**
+   * Cambia el modo de la pagina
+   */
+  setDarkMode = effect(() => {
+    document.documentElement.classList.toggle('dark', this.darkMode());
+  });
+
+  /**
+   * Detecta si cambio el tamaño de la ventana
+   */
+  detectDeviceType = effect(() => {
+    this.deviceType = this._checkWindowsSice.deviceTypeComputed();
+  });
+
+
+  constructor() { }
 
   ngOnInit(): void {
     this.createForm();
   }
 
   createForm() {
-    
     this.searchForm = this.fb.group({
       search: [''],
     });
@@ -34,5 +57,6 @@ export class TitleComponent implements OnInit {
         }
       );
   }
+
 
 }

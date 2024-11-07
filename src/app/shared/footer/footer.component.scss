@@ -1,3 +1,8 @@
 .footerContainer{
-    height: 10vh;   
+   display: flex;
+   justify-content: center;
+}
+
+.footerContainer h3{
+   font-size: 21px;
 }

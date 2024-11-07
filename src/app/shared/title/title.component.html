@@ -1,3 +1,15 @@
-<div class="titleContainer">
-   
-</div>
+<mat-toolbar class="header" [style.background-color]="'var(--sys-surface-container-low)'">
+  <button class="switchTheme" mat-icon-button (click)="darkMode.set(!darkMode())">
+    @if(darkMode()){
+    <mat-icon>light_mode</mat-icon>
+    }@else {
+    <mat-icon>dark_mode</mat-icon>
+    }
+  </button>
+  @if(this.deviceType === 'mobile' || this.deviceType === 'tablet'){
+  <button (click)="toggleSideNav.set(!toggleSideNav())" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  }
+
+</mat-toolbar>
