@@ -11,5 +11,7 @@ import { FooterComponent } from './shared/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'FirstApp';
+  title = 'Ecommerce';
+  constructor() {
+  }
 }
