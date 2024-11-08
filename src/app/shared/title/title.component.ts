@@ -3,12 +3,14 @@ import { MaterialModule } from '../material.module';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { CheckWindowsSiceService } from '../services/check-windows-sice.service';
+import { SharedSignalsService } from '../services/shared-signals.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-title',
   standalone: true,
-  imports: [MaterialModule, ReactiveFormsModule],
+  imports: [MaterialModule, ReactiveFormsModule,CommonModule],
   templateUrl: './title.component.html',
   styleUrl: './title.component.scss'
 })
@@ -17,9 +19,10 @@ export class TitleComponent implements OnInit {
   searchForm!: FormGroup;
   switchTheme = new FormControl(false);
   darkMode = signal(false);
-  toggleSideNav = signal(false);
+  
   deviceType:string = '';
   private _checkWindowsSice = inject(CheckWindowsSiceService);
+   sharedSignalsSvc = inject(SharedSignalsService);
 
   /**
    * Cambia el modo de la pagina

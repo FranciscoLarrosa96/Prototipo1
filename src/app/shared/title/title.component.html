@@ -6,8 +6,12 @@
     <mat-icon>dark_mode</mat-icon>
     }
   </button>
-  @if(this.deviceType === 'mobile' || this.deviceType === 'tablet'){
-  <button (click)="toggleSideNav.set(!toggleSideNav())" mat-icon-button>
+  <h1 [ngClass]="{'small' : this.deviceType === 'mobile-s', 'medium' : this.deviceType === 'mobile-m', 
+  'large' : this.deviceType === 'mobile-l', 'tablet' : this.deviceType === 'tablet', 'desktop' : this.deviceType === 'desktop'
+  }">Zona Tecno</h1>
+  @if(this.deviceType === 'mobile-s' || this.deviceType === 'mobile-m' || this.deviceType === 'mobile-l' ||
+  this.deviceType === 'tablet') {
+  <button (click)="sharedSignalsSvc.toggleSideNavSignal.set(!sharedSignalsSvc.toggleSideNavSignal())" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
   }

@@ -1,29 +1,31 @@
 <div class="homeContainer" [style.background-color]="'var(--sys-surface-bright)'">
+<!--     
+    <div class="filtros">
 
-   
-
-</div>
-
-<!-- <div class="listContainer">
-    @for (item of items; track $index) {
-    <div [routerLink]="['/product/'+item.id]" class="card" (mouseenter)="showDescription($index)"
-        (mouseleave)="hiddenDescription($index)" [ngClass]="{'mouseHover':mouseHover[$index]}">
-        <div class="imgContainer">
-            <img src="{{item.img}}" alt="">
-        </div>
-        <div class="otherContainer">
-            <p class="titleProduct">{{item.title}}</p>
-            @if(item.review){
-            <p class="review"></p>
-            }
-            <p class="price">$ {{item.price | number}}</p>
-            <p class="cuotas">en 6 cuotas de $ {{(item.price * 1.33) / 6 | number:'1.0-0'}}</p>
-            @if(item.price > 30000){
-            <p class="free">Envio gratis</p>
-            }
-        </div>
     </div>
-    }@empty {
-    <h2>No hay elementos para mostrar...</h2>
-    }
-</div> -->
+    <div class="listContainer">
+        @for (item of items; track $index) {
+        <div [routerLink]="['/product/'+item.id]" class="card" (mouseenter)="showDescription($index)"
+            (mouseleave)="hiddenDescription($index)" [ngClass]="{'mouseHover':mouseHover[$index]}">
+            <div class="imgContainer">
+                <img src="{{item.img}}" alt="">
+            </div>
+            <div class="otherContainer">
+                <p class="titleProduct">{{item.title}}</p>
+                @if(item.review){
+                <p class="review"></p>
+                }
+                <p class="price">$ {{item.price | number}}</p>
+                <p class="cuotas">en 6 cuotas de $ {{(item.price * 1.33) / 6 | number:'1.0-0'}}</p>
+                @if(item.price > 30000){
+                <p class="free">Envio gratis</p>
+                }
+            </div>
+        </div>
+        }@empty {
+        <h2>No hay elementos para mostrar...</h2>
+        }
+    </div> -->
+
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi officia corporis est! Esse, nesciunt, illo officiis nobis iste adipisci amet omnis rem quam ipsa nostrum perspiciatis tempora excepturi deserunt eaque?</h1>
+</div>
