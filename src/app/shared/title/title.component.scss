@@ -1,26 +1,6 @@
-.header {
-  position: fixed;
-  box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.75);
-}
 
-.switchTheme {
-  position: absolute;
-  right: 0;
-}
 
-.small {
-  position: absolute;
-  right: 34%;
-}
-
-.medium {
-  position: absolute;
-  right: 36%;
-}
-
-.large {
-  position: absolute;
-  right: 38%;
+.header{
+  display: flex;
+  justify-content: space-between;
 }

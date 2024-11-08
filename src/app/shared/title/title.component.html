@@ -1,4 +1,11 @@
-<mat-toolbar class="header" [style.background-color]="'var(--sys-surface-container-low)'">
+<mat-toolbar class="header mat-elevation-z3" [style.background-color]="'var(--sys-surface-container-low)'">
+  @if(this.deviceType === 'mobile-s' || this.deviceType === 'mobile-m' || this.deviceType === 'mobile-l' ||
+  this.deviceType === 'tablet') {
+  <button (click)="sharedSignalsSvc.toggleSideNavSignal.set(!sharedSignalsSvc.toggleSideNavSignal())" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  }
+  <h1>Zona Tecno</h1>
   <button class="switchTheme" mat-icon-button (click)="darkMode.set(!darkMode())">
     @if(darkMode()){
     <mat-icon>light_mode</mat-icon>
@@ -6,14 +13,4 @@
     <mat-icon>dark_mode</mat-icon>
     }
   </button>
-  <h1 [ngClass]="{'small' : this.deviceType === 'mobile-s', 'medium' : this.deviceType === 'mobile-m', 
-  'large' : this.deviceType === 'mobile-l', 'tablet' : this.deviceType === 'tablet', 'desktop' : this.deviceType === 'desktop'
-  }">Zona Tecno</h1>
-  @if(this.deviceType === 'mobile-s' || this.deviceType === 'mobile-m' || this.deviceType === 'mobile-l' ||
-  this.deviceType === 'tablet') {
-  <button (click)="sharedSignalsSvc.toggleSideNavSignal.set(!sharedSignalsSvc.toggleSideNavSignal())" mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
-  }
-
 </mat-toolbar>
