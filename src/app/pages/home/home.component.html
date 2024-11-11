@@ -1,11 +1,7 @@
 <div class="homeContainer" [style.background-color]="'var(--sys-surface-bright)'">
-<!--     
-    <div class="filtros">
-
-    </div>
-    <div class="listContainer">
-        @for (item of items; track $index) {
-        <div [routerLink]="['/product/'+item.id]" class="card" (mouseenter)="showDescription($index)"
+    <div class="homeContainer__list">
+        @for (item of items; track item.id) {
+            <div [routerLink]="['/product/'+item.id]" class="card" (mouseenter)="showDescription($index)"
             (mouseleave)="hiddenDescription($index)" [ngClass]="{'mouseHover':mouseHover[$index]}">
             <div class="imgContainer">
                 <img src="{{item.img}}" alt="">
@@ -22,8 +18,6 @@
                 }
             </div>
         </div>
-        }@empty {
-        <h2>No hay elementos para mostrar...</h2>
         }
-    </div> -->
+    </div>
 </div>

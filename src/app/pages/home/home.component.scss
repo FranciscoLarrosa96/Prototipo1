@@ -1,13 +1,14 @@
-.homeContainer {
+.homeContainer__list{
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
-    gap: 3rem;
 }
 
 .card {
     transition: box-shadow 0.3s ease;
     cursor: pointer;
-    background-color:var(--sys-tertiary);
+    background-color:var(--sys-surface-bright);
     height: 480px;
     max-height: 530px;
     width: 284px;
@@ -16,6 +17,8 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 200;
 }
 
 .listContainer {

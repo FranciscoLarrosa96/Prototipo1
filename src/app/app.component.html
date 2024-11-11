@@ -1,11 +1,23 @@
-<div class="mainContainer">
-    <div class="titleContainer">
-        <app-title />
-    </div>
-    <div class="homeContent">
-        <router-outlet />
-    </div>
-    <div class="footerContainer">
-        <app-footer />
-    </div>
-</div>
+<mat-toolbar class="header mat-elevation-z3" [style.background-color]="'var(--sys-surface-container-low)'">
+    <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Zona Tecno</h1>
+    <button class="switchTheme" mat-icon-button (click)="darkMode.set(!darkMode())">
+        @if(darkMode()){
+        <mat-icon>light_mode</mat-icon>
+        }@else {
+        <mat-icon>dark_mode</mat-icon>
+        }
+    </button>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav [ngClass]="{'hideSideBar' : this.collapsed(), 'showSideBar' : !this.collapsed()}" class="sideNav"
+        opened mode="side" [style.width]="withSidenav">
+        <app-custom-sidenav [collapsed]="collapsed()" />
+    </mat-sidenav>
+    <mat-sidenav-content [style.margin-left]="withSidenavContent" [ngClass]="{'hideSideBarContent' : this.collapsed(), 'showSideBarContent' : !this.collapsed()}"
+        class="content" >
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
