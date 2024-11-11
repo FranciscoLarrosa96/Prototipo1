@@ -12,12 +12,10 @@
     </button>
 </mat-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav [ngClass]="{'hideSideBar' : this.collapsed(), 'showSideBar' : !this.collapsed()}" class="sideNav"
-        opened mode="side" [style.width]="withSidenav">
+    <mat-sidenav class="sideNav" opened mode="side" [style.width]="withSidenav">
         <app-custom-sidenav [collapsed]="collapsed()" />
     </mat-sidenav>
-    <mat-sidenav-content [style.margin-left]="withSidenavContent" [ngClass]="{'hideSideBarContent' : this.collapsed(), 'showSideBarContent' : !this.collapsed()}"
-        class="content" >
+    <mat-sidenav-content [style.margin-left]="withSidenavContent" class="content">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

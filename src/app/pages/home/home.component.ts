@@ -1,15 +1,16 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, effect, inject } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../shared/material.module';
+import { SharedSignalsService } from '../../shared/services/shared-signals.service';
 register();
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,RouterModule,MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   schemas: [
@@ -18,6 +19,7 @@ register();
 })
 export class HomeComponent {
   mouseHover: boolean[] = [];
+  sideNavOpacity:string = '1';
   items: Product[] = [
     {
       id: '1',
@@ -31,7 +33,7 @@ export class HomeComponent {
         "assets/img/products/imgForProduct/a620/a620-2.webp",
         "assets/img/products/imgForProduct/a620/a620-3.webp",
       ],
-      review: {stars:4,description :'asd'}
+      review: { stars: 4, description: 'asd' }
     },
     {
       id: '2',
@@ -39,7 +41,7 @@ export class HomeComponent {
       title: 'Mother A620M-K',
       description: '',
       price: 1100000,
-      review: {stars:5,description :'asd'}
+      review: { stars: 5, description: 'asd' }
     },
     {
       id: '3',
@@ -47,7 +49,7 @@ export class HomeComponent {
       title: 'Mother A620',
       description: '',
       price: 100000,
-      
+
     },
     {
       id: '4',
@@ -55,7 +57,7 @@ export class HomeComponent {
       title: 'Mother A620',
       description: '',
       price: 100000,
-      
+
     },
     {
       id: '5',
@@ -63,7 +65,7 @@ export class HomeComponent {
       title: 'Mother A620',
       description: '',
       price: 100000,
-      
+
     },
     {
       id: '6',
@@ -71,7 +73,7 @@ export class HomeComponent {
       title: 'Mother A620',
       description: '',
       price: 100000,
-      
+
     },
     {
       id: '7',
@@ -79,9 +81,22 @@ export class HomeComponent {
       title: 'Mother A620',
       description: '',
       price: 100000,
-      
+
     }
   ];
+
+ sharedSignalSvc = inject(SharedSignalsService);
+
+  /**
+   * Detect changes in the sidenav
+   */
+    sidenavChange = effect(() => {
+      if (this.sharedSignalSvc.collapsedSidenavComputed()) {
+        this.sideNavOpacity = '0.1';
+      }else{
+        this.sideNavOpacity = '1';
+      }
+    });
 
   constructor() {
 

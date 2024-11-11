@@ -5,6 +5,17 @@
     justify-content: center;
 }
 
+//TODO:: Agregar que solo funcione en mobile 
+.sideNavOpen {
+    opacity: 0.1;
+    transition: opacity 0.3s ease; /* Cambiado a opacity */
+}
+
+.sideNavClose{
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Cambiado a opacity */
+}
+
 .card {
     transition: box-shadow 0.3s ease;
     cursor: pointer;
