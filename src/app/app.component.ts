@@ -6,12 +6,14 @@ import { CustomSidenavComponent } from './components/custom-sidenav/custom-siden
 import { CheckWindowsSiceService } from './shared/services/check-windows-sice.service';
 import { CommonModule } from '@angular/common';
 import { SharedSignalsService } from './shared/services/shared-signals.service';
+import { animationsCustom } from './animations';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  animations : animationsCustom
 })
 export class AppComponent {
   title = 'Zona Tecno';

@@ -1,6 +1,7 @@
 .sidenav-header {
     padding-top: 24px;
     text-align: center;
+    height: 14%;
 }
 
 .imgProfile {
@@ -19,10 +20,26 @@
         margin: 0;
         font-size: 1rem;
         line-height: 1.5rem;
+        width: 0;
+        transition: width 0.2s ease;
     }
 
     >p {
         margin: 0;
         font-size: 0.8rem;
     }
+}
+
+.navList {
+    width: 0;
+    /* Ancho inicial */
+    transition: width 0.2s ease;
+    /* Duración y tipo de transición */
+}
+
+.sidenavContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1.5rem;
 }

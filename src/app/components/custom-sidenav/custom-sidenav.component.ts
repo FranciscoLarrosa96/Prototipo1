@@ -1,6 +1,7 @@
-import { Component, computed, Input, signal } from '@angular/core';
+import { Component, computed, effect, Input, signal } from '@angular/core';
 import { MaterialModule } from '../../shared/material.module';
 import { RouterModule } from '@angular/router';
+import { animationsCustom } from '../../animations';
 
 export type MenuItems = {
   icon: string;
@@ -12,9 +13,10 @@ export type MenuItems = {
 @Component({
   selector: 'app-custom-sidenav',
   standalone: true,
-  imports: [MaterialModule,RouterModule],
+  imports: [MaterialModule, RouterModule],
   templateUrl: './custom-sidenav.component.html',
-  styleUrl: './custom-sidenav.component.scss'
+  styleUrl: './custom-sidenav.component.scss',
+  animations: animationsCustom
 })
 export class CustomSidenavComponent {
 
@@ -30,5 +32,10 @@ export class CustomSidenavComponent {
     { icon: 'logout', title: 'Logout' },
   ]);
 
-  profilePicSize = computed(() => this.sideNavCollapsed() ? '32' : '100');
+  navListWidth = computed<string>(() => this.sideNavCollapsed() ? '142px' : '0px');
+
+  testeffect = effect (() => {
+    console.log('testeffect',this.navListWidth());
+    
+  });
 }
