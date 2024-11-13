@@ -14,6 +14,19 @@ mat-sidenav-container {
     -webkit-box-shadow: 5px 0px 5px -1px rgba(0, 0, 0, 0.44);
     -moz-box-shadow: 5px 0px 5px -1px rgba(0, 0, 0, 0.44);
     border-radius: 0;
-    width: 0; /* Ancho inicial */
-    transition: width 0.2s ease; /* Duración y tipo de transición */
 }
+
+mat-sidenav, mat-sidenav-content {
+    transition: all 300ms ease-in-out;
+}
+
+.sidenavOpen::before {
+    content: ''; /* Necesario para que el pseudo-elemento se muestre */
+    position: fixed; /* Hace que el elemento ocupe toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ancho completo de la pantalla */
+    height: 100vh; /* Altura completa de la pantalla */
+    background-color: rgba(0, 0, 0, 0.5); /* Color semitransparente, opcional */
+    z-index: 999; /* Asegura que el overlay esté en la parte superior */
+  }

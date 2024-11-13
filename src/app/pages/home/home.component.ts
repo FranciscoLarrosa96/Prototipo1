@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../shared/material.module';
-import { SharedSignalsService } from '../../shared/services/shared-signals.service';
 register();
 
 @Component({
@@ -85,18 +84,6 @@ export class HomeComponent {
     }
   ];
 
- sharedSignalSvc = inject(SharedSignalsService);
-
-  /**
-   * Detect changes in the sidenav
-   */
-    sidenavChange = effect(() => {
-      if (this.sharedSignalSvc.collapsedSidenavComputed()) {
-        this.sideNavOpacity = '0.1';
-      }else{
-        this.sideNavOpacity = '1';
-      }
-    });
 
   constructor() {
 

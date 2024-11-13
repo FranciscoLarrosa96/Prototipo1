@@ -33,9 +33,4 @@ export class CustomSidenavComponent {
   ]);
 
   navListWidth = computed<string>(() => this.sideNavCollapsed() ? '142px' : '0px');
-
-  testeffect = effect (() => {
-    console.log('testeffect',this.navListWidth());
-    
-  });
 }

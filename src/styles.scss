@@ -640,3 +640,7 @@ body.no-scrollbar::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari y Opera */
 }
+
+html{
+  transition: all 300ms ease-in-out;
+}

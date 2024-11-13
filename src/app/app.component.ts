@@ -48,5 +48,14 @@ export class AppComponent {
   constructor() {
   }
 
+  /**
+   * Cuando clickeo dentro del content cierro el sidenav
+   */
+  clickOnContent() {
+    if (this.collapsed()) {
+      this.collapsed.set(!this.collapsed());
+    }
+  }
+
 
 }

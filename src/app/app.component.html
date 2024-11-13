@@ -15,7 +15,7 @@
     <mat-sidenav class="sideNav" opened mode="side" [style.width]="withSidenav">
         <app-custom-sidenav [collapsed]="collapsed()" />
     </mat-sidenav>
-    <mat-sidenav-content [style.margin-left]="withSidenavContent" class="content">
+    <mat-sidenav-content [style.margin-left]="withSidenavContent" class="sidenavContent" [ngClass]="{'sidenavOpen' : this.collapsed()}" (click)="clickOnContent()">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

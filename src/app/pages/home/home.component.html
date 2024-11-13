@@ -1,5 +1,4 @@
-<div class="homeContainer" [style.background-color]="'var(--sys-surface-bright)'"
-    [ngClass]="{'sideNavOpen' : sharedSignalSvc.collapsedSidenavComputed(), 'sideNavClose' : !sharedSignalSvc.collapsedSidenavComputed()}">
+<div class="homeContainer" [style.background-color]="'var(--sys-surface-bright)'">
     <div class="homeContainer__list">
         @for (item of items; track item.id) {
         <div [routerLink]="['/product/'+item.id]" class="card" (mouseenter)="showDescription($index)"
