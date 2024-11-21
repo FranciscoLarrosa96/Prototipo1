@@ -1,10 +1,22 @@
 <div class="sidenavContainer">
     <div class="sidenav-header">
         <div class="imgProfile">
-            <img [width]="'100'" [height]="'100'" src="/assets/profile/profile.jpg" alt="">
+            <!--  TODO: Agregar foto del perfil cuando se loguee el user -->
+            @if (darkModeToggle()) {
+            <img [width]="'100'" [height]="'100'" src="/assets/logo/user-light.svg" alt="">
+            }@else {
+            <img [width]="'100'" [height]="'100'" src="/assets/logo/user-dark.svg" alt="">
+            }
+
         </div>
         <div class="header-text">
-            <h2 [style.width]="navListWidth()">Francisco Larrosa</h2>
+            <!-- TODO: Mostrar nombre user cuando se loguee -->
+            @if(false){
+                <h2 [style.width]="navListWidth()">Francisco Larrosa</h2>
+            }@else {
+                <h2 [style.width]="navListWidth()">Guest</h2>
+            }
+           
         </div>
     </div>
     <mat-nav-list class="navList" [style.width]="navListWidth()">

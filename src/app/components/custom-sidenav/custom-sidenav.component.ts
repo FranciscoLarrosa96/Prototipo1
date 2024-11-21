@@ -21,8 +21,12 @@ export type MenuItems = {
 export class CustomSidenavComponent {
 
   sideNavCollapsed = signal(false);
+  darkModeToggle = signal(false);
   @Input() set collapsed(value: boolean) {
     this.sideNavCollapsed.set(value);
+  }
+  @Input() set darkMode(value: boolean) {
+    this.darkModeToggle.set(value);
   }
 
   menuItems = signal<MenuItems[]>([
