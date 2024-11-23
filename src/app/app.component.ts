@@ -1,5 +1,5 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { MaterialModule } from './shared/material.module';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
@@ -10,7 +10,7 @@ import { animationsCustom } from './animations';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule],
+  imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations : animationsCustom
