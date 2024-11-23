@@ -11,12 +11,11 @@ export type MenuItems = {
 }
 
 @Component({
-  selector: 'app-custom-sidenav',
-  standalone: true,
-  imports: [MaterialModule, RouterModule],
-  templateUrl: './custom-sidenav.component.html',
-  styleUrl: './custom-sidenav.component.scss',
-  animations: animationsCustom
+    selector: 'app-custom-sidenav',
+    imports: [MaterialModule, RouterModule],
+    templateUrl: './custom-sidenav.component.html',
+    styleUrl: './custom-sidenav.component.scss',
+    animations: animationsCustom
 })
 export class CustomSidenavComponent {
 

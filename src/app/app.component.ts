@@ -8,12 +8,11 @@ import { CommonModule } from '@angular/common';
 import { SharedSignalsService } from './shared/services/shared-signals.service';
 import { animationsCustom } from './animations';
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  animations : animationsCustom
+    selector: 'app-root',
+    imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    animations: animationsCustom
 })
 export class AppComponent {
   title = 'Zona Tecno';

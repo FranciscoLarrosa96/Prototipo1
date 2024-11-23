@@ -7,14 +7,13 @@ import { MaterialModule } from '../../shared/material.module';
 register();
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RouterModule, MaterialModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+    selector: 'app-home',
+    imports: [CommonModule, RouterModule, MaterialModule],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ]
 })
 export class HomeComponent {
   mouseHover: boolean[] = [];

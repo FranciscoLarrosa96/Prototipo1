@@ -8,11 +8,10 @@ import { CommonModule } from '@angular/common';
 
 
 @Component({
-  selector: 'app-title',
-  standalone: true,
-  imports: [MaterialModule, ReactiveFormsModule,CommonModule],
-  templateUrl: './title.component.html',
-  styleUrl: './title.component.scss'
+    selector: 'app-title',
+    imports: [MaterialModule, ReactiveFormsModule, CommonModule],
+    templateUrl: './title.component.html',
+    styleUrl: './title.component.scss'
 })
 export class TitleComponent implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
