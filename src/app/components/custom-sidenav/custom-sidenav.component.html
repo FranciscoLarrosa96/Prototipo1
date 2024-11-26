@@ -1,4 +1,4 @@
-<div class="sidenavContainer">
+<div class="sidenavContainer" [style.background-color]="'var(--sys-surface-container-low)'">
     <div class="sidenav-header">
         <div class="imgProfile">
             <!--  TODO: Agregar foto del perfil cuando se loguee el user -->
@@ -22,9 +22,15 @@
     <mat-nav-list class="navList" [style.width]="navListWidth()">
         @if(this.sideNavCollapsed()){
         @for (item of menuItems(); track item.title) {
+            @let userLogged = false;
         <a mat-list-item [routerLink]="item.route" routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive">
             <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
             <span matListItemTitle>{{item.title}}</span>
+            @if(userLogged){
+                
+            }@else {
+                
+            }
         </a>
         }
         }

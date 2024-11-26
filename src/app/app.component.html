@@ -12,7 +12,7 @@
     </button>
 </mat-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav class="sideNav" opened mode="side" [style.width]="withSidenav">
+    <mat-sidenav class="sideNav" opened mode="side" [style.width]="withSidenav" [disableClose]="true">
         <app-custom-sidenav [darkMode]="darkMode()" [collapsed]="collapsed()"/>
     </mat-sidenav>
     <mat-sidenav-content [style.margin-left]="withSidenavContent" class="sidenavContent" [ngClass]="{'sidenavOpen' : this.collapsed()}" (click)="clickOnContent()">

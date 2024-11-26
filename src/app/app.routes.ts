@@ -23,6 +23,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/profile/profile.component').then(component => component.ProfileComponent)
     },
     {
+        path : 'login',
+        loadComponent: () => import('./pages/login/login.component').then(component => component.LoginComponent)
+    },
+    {
         path : '**',
         redirectTo : '/home'
     }
