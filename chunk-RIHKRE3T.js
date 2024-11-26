@@ -1,1 +1,0 @@
-import{Ib as n,Jb as i,cc as p,ib as o}from"./chunk-M3YOGXBS.js";var l=(()=>{class e{static{this.\u0275fac=function(t){return new(t||e)}}static{this.\u0275cmp=o({type:e,selectors:[["app-profile"]],decls:2,vars:0,template:function(t,a){t&1&&(n(0,"p"),p(1,"profile works!"),i())},encapsulation:2})}}return e})();export{l as ProfileComponent};
