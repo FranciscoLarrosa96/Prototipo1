@@ -3,19 +3,23 @@
         <mat-icon>menu</mat-icon>
     </button>
     <h1 [routerLink]="'/home'">Zona Tecno</h1>
-    <button class="switchTheme" mat-icon-button (click)="darkMode.set(!darkMode())">
-        @if(darkMode()){
-        <mat-icon>light_mode</mat-icon>
-        }@else {
-        <mat-icon>dark_mode</mat-icon>
-        }
-    </button>
+    <div class="buttons">
+        <button mat-icon-button>
+            <img src="../assets/icons/cart.svg" alt="cart-icon">
+        </button>
+        <button (click)="openLogin()" mat-icon-button>
+            <img src="../assets/icons/user.svg" alt="user-icon">
+        </button>
+        <button mat-icon-button>
+            <img src="../assets/icons/search.svg" alt="user-icon">
+        </button>
+    </div>
 </mat-toolbar>
 <mat-sidenav-container>
     <mat-sidenav class="sideNav" opened mode="side" [style.width]="withSidenav" [disableClose]="true">
         <app-custom-sidenav [darkMode]="darkMode()" [collapsed]="collapsed()"/>
     </mat-sidenav>
-    <mat-sidenav-content [style.margin-left]="withSidenavContent" class="sidenavContent" [ngClass]="{'sidenavOpen' : this.collapsed()}" (click)="clickOnContent()">
+    <mat-sidenav-content [style.margin-left]="withSidenavContent" class="sidenavContent" [class.sidenavOpen]="this.collapsed()" (click)="clickOnContent()">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

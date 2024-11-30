@@ -3,6 +3,10 @@ mat-toolbar {
     z-index: 5;
     display: flex;
     justify-content: space-between;
+
+    > h1 {
+        font-size: 18px;
+    }
 }
 
 mat-sidenav-container {

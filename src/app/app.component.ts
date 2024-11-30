@@ -7,6 +7,8 @@ import { CheckWindowsSiceService } from './shared/services/check-windows-sice.se
 import { CommonModule } from '@angular/common';
 import { SharedSignalsService } from './shared/services/shared-signals.service';
 import { animationsCustom } from './animations';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from './pages/login/login';
 @Component({
     selector: 'app-root',
     imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
@@ -23,12 +25,7 @@ export class AppComponent {
   withSidenavContent: string = '0px';
   deviceType = inject(CheckWindowsSiceService);
   private sharedSignalSvc = inject(SharedSignalsService);
-  /**
-  * Cambia el modo de la pagina
-  */
-  setDarkMode = effect(() => {
-    document.documentElement.classList.toggle('dark', this.darkMode());
-  });
+  private _matDialog = inject(MatDialog);
 
   /**
  * Detect changes in the device size
@@ -41,7 +38,7 @@ export class AppComponent {
       this.sharedSignalSvc.collapsedSidenavSignal.set(this.collapsed());
       this.withSidenav = '0px';
     }
-  },{allowSignalWrites: true});
+  });
 
 
   constructor() {
@@ -54,6 +51,19 @@ export class AppComponent {
     if (this.collapsed()) {
       this.collapsed.set(!this.collapsed());
     }
+  }
+
+
+  /**
+   * Open Login component
+   */
+  openLogin() {
+    this._matDialog.open(LoginComponent, {
+      panelClass: 'login-dialog',
+      data: { name: 'Login' }
+    });
+    const buttonElement = document.activeElement as HTMLElement; // Get the currently focused element
+    buttonElement.blur(); // Remove focus from the button
   }
 
 
