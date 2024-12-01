@@ -69,6 +69,9 @@
     /* Mantiene la relación de aspecto */
     object-fit: contain;
     /* Asegura que la imagen cubra el contenedor */
+    background: white;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
 }
 
 .otherContainer {

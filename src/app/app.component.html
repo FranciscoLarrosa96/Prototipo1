@@ -1,17 +1,17 @@
-<mat-toolbar class="header mat-elevation-z3" [style.background-color]="'var(--sys-surface-container-low)'">
+<mat-toolbar class="header mat-elevation-z3">
     <button mat-icon-button (click)="collapsed.set(!collapsed())">
-        <mat-icon>menu</mat-icon>
+        <mat-icon class="text-white">menu</mat-icon>
     </button>
     <h1 [routerLink]="'/home'">Zona Tecno</h1>
     <div class="buttons">
         <button mat-icon-button>
-            <img src="../assets/icons/cart.svg" alt="cart-icon">
+            <img src="assets/icons/cart.svg" alt="cart-icon">
         </button>
         <button (click)="openLogin()" mat-icon-button>
-            <img src="../assets/icons/user.svg" alt="user-icon">
+            <img src="assets/icons/user.svg" alt="user-icon">
         </button>
         <button mat-icon-button>
-            <img src="../assets/icons/search.svg" alt="user-icon">
+            <img src="assets/icons/search.svg" alt="user-icon">
         </button>
     </div>
 </mat-toolbar>

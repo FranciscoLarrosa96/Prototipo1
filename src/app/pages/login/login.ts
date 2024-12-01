@@ -4,11 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../shared/material.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckWindowsSiceService } from '../../shared/services/check-windows-sice.service';
-import { UserService } from '../../components/user/user.service';
-import { catchError, throwError } from 'rxjs';
+import { AuthService } from '../../shared/services/auth.service';
+import { catchError, finalize, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ResponseInterface, ResponseInterfaceGoogle } from '../../interfaces/response.interface';
-
+import { MatDialogRef } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+import 'animate.css'; //Allows the use of animate.css animations on the alert
 
 declare const google: any;
 
@@ -17,22 +19,19 @@ declare const google: any;
   imports: [CommonModule, ReactiveFormsModule, MaterialModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
-  providers: [UserService],
+  providers: [AuthService],
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
   deviceSice = signal<string>('');
+  dialogRef = inject(MatDialogRef<LoginComponent>);
+  showSpinner = signal<boolean>(false);
   private _checkWindowsSiceService = inject(CheckWindowsSiceService);
-  private _userSvc = inject(UserService);
+  private _authSvc = inject(AuthService);
   @ViewChild('btnGoogle') btnGoogle!: ElementRef;
 
   constructor(private fb: FormBuilder) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      remememberMe: [false]
-    });
   }
 
 
@@ -44,7 +43,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
   });
 
   ngOnInit() {
+    this.createForm();
+  }
 
+  createForm() {
+    this.loginForm = this.fb.group({
+      email: [localStorage.getItem('email') || '', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
+      remememberMe: [false]
+    });
   }
 
   ngAfterViewInit(): void {
@@ -59,7 +66,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   googleInit() {
     google.accounts.id.initialize({
       client_id: "684557034764-dot47pevhl29b9q3koj83vnkkim2v26l.apps.googleusercontent.com",
-      callback: (res: any) => this.handleCredentialResponse(res)
+      callback: (res: ResponseInterfaceGoogle) => this.handleCredentialResponse(res)
     });
     google.accounts.id.renderButton(
       this.btnGoogle.nativeElement, // HTML element
@@ -69,9 +76,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   handleCredentialResponse(response: ResponseInterfaceGoogle) {
-    this._userSvc.loginGoogle(response.credential)
+    this._authSvc.loginGoogle(response.credential)
       .pipe(
         catchError((error: HttpErrorResponse) => {
+          if (error.error.message === 'Failed to fetch') {
+            this.errorSwalPopup('Error en la conexión con el servidor');
+          } else {
+            this.errorSwalPopup(error.error.message);
+          }
           return throwError(() => error.error.message);
         }))
       .subscribe({
@@ -83,15 +95,49 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
 
   loginUser() {
-    this._userSvc.loginUser(this.loginForm.value)
+    this.showSpinner.set(true);
+    if (this.loginForm.get('remememberMe')?.value) {
+      localStorage.setItem('email', this.loginForm.get('email')?.value);
+    }
+    this._authSvc.loginUser(this.loginForm.value)
       .pipe(
         catchError((error: HttpErrorResponse) => {
+          if (error.error.message === 'Failed to fetch') {
+            this.errorSwalPopup('Error en la conexión con el servidor');
+          } else {
+            this.errorSwalPopup(error.error.message);
+          }
           return throwError(() => error.error.message);
         }))
+      .pipe(
+        finalize(() => this.showSpinner.set(false))
+      )
       .subscribe({
         next: (res: ResponseInterface) => {
-          console.log(res.user.name);
+          console.log(res);
         }
       })
+  }
+
+  errorSwalPopup(message: string) {
+    Swal.fire({
+      title: 'Error',
+      text: message,
+      icon: 'error',
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `
+      }
+    });
   }
 }

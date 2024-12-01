@@ -1,12 +1,16 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
+import { computed, inject, Injectable, signal } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { tap } from "rxjs";
 import { LoginInterface } from "../../interfaces/login.interface";
+import { User } from "../../interfaces/user.interface";
 
 
 @Injectable()
-export class UserService {
+export class AuthService {
+    userLoggedSignal = signal<User>({ _id: '', email: '', emailVerified: false, img: '', name: '', role: [] });
+    userLoggedComputed = computed(() => this.userLoggedSignal());
+
     private http = inject(HttpClient);
 
     loginUser(formData: LoginInterface) {

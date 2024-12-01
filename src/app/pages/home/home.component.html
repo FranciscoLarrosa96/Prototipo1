@@ -1,4 +1,4 @@
-<div class="homeContainer" [style.background-color]="'var(--sys-surface-bright)'">
+<div class="homeContainer">
     <div class="homeContainer__list">
         @for (item of items; track item.id) {
         <div [routerLink]="['/product/'+item.id]" class="card" (mouseenter)="showDescription($index)"
@@ -9,7 +9,7 @@
             <div class="otherContainer">
                 <p class="titleProduct">{{item.title}}</p>
                 @if(item.review){
-                <p class="review"></p>
+                <p class="review fiveStars"></p>
                 }
                 <p class="price">$ {{item.price | number}}</p>
                 <p class="cuotas">en 6 cuotas de $ {{(item.price * 1.33) / 6 | number:'1.0-0'}}</p>
