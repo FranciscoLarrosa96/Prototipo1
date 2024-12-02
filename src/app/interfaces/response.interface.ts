@@ -1,12 +1,8 @@
+import { User } from "./user.interface";
+
 export interface ResponseInterface {
     token: string;
-    user: {
-        email: string;
-        emailVerified: boolean;
-        id: string;
-        name: string;
-        role: string[];
-    };
+    user: User;
 }
 
 export interface ResponseInterfaceGoogle {

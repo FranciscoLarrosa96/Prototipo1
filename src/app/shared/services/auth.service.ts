@@ -10,7 +10,8 @@ import { User } from "../../interfaces/user.interface";
 export class AuthService {
     userLoggedSignal = signal<User>({ _id: '', email: '', emailVerified: false, img: '', name: '', role: [] });
     userLoggedComputed = computed(() => this.userLoggedSignal());
-
+    logoutSignal = signal<boolean>(false);
+    logoutComputed = computed<boolean>(() => this.logoutSignal());
     private http = inject(HttpClient);
 
     loginUser(formData: LoginInterface) {

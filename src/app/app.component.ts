@@ -1,5 +1,5 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MaterialModule } from './shared/material.module';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
@@ -10,11 +10,11 @@ import { animationsCustom } from './animations';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './pages/login/login';
 @Component({
-    selector: 'app-root',
-    imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    animations: animationsCustom
+  selector: 'app-root',
+  imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  animations: animationsCustom
 })
 export class AppComponent {
   title = 'Zona Tecno';
@@ -26,6 +26,7 @@ export class AppComponent {
   deviceType = inject(CheckWindowsSiceService);
   private sharedSignalSvc = inject(SharedSignalsService);
   private _matDialog = inject(MatDialog);
+  private _router = inject(Router);
 
   /**
  * Detect changes in the device size
@@ -58,12 +59,16 @@ export class AppComponent {
    * Open Login component
    */
   openLogin() {
-    this._matDialog.open(LoginComponent, {
-      panelClass: 'login-dialog',
-      data: { name: 'Login' }
-    });
-    const buttonElement = document.activeElement as HTMLElement; // Get the currently focused element
-    buttonElement.blur(); // Remove focus from the button
+    if (localStorage.getItem('token')) {
+      this._router.navigate(['/profile']);
+    } else {
+      this._matDialog.open(LoginComponent, {
+        panelClass: 'login-dialog',
+        data: { name: 'Login' }
+      });
+      const buttonElement = document.activeElement as HTMLElement; // Get the currently focused element
+      buttonElement.blur(); // Remove focus from the button
+    }
   }
 
 

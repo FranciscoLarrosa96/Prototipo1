@@ -20,7 +20,7 @@ export const routes: Routes = [
     },
     {
         path : 'profile',
-        loadComponent: () => import('./pages/profile/profile.component').then(component => component.ProfileComponent)
+        loadComponent: () => import('./pages/profile/profile').then(component => component.ProfileComponent)
     },
     {
         path : '**',

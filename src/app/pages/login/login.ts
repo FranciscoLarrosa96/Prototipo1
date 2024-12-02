@@ -11,6 +11,7 @@ import { ResponseInterface, ResponseInterfaceGoogle } from '../../interfaces/res
 import { MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import 'animate.css'; //Allows the use of animate.css animations on the alert
+import { Router } from '@angular/router';
 
 declare const google: any;
 
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   showSpinner = signal<boolean>(false);
   private _checkWindowsSiceService = inject(CheckWindowsSiceService);
   private _authSvc = inject(AuthService);
+  private _router = inject(Router);
   @ViewChild('btnGoogle') btnGoogle!: ElementRef;
 
   constructor(private fb: FormBuilder) {
@@ -56,23 +58,19 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.googleInit();
-    setTimeout(() => {
-      google.accounts.id.revoke('franciscolarrosa22@gmail.com', () => {
-        localStorage.removeItem('token');
-      });
-    }, 1500);
   }
 
   googleInit() {
     google.accounts.id.initialize({
       client_id: "684557034764-dot47pevhl29b9q3koj83vnkkim2v26l.apps.googleusercontent.com",
-      callback: (res: ResponseInterfaceGoogle) => this.handleCredentialResponse(res)
+      callback: (res: ResponseInterfaceGoogle) => this.handleCredentialResponse(res),
+      use_fedcm_for_prompt: false // Optional. If set to true, One Tap will use the FEDCM flow for the prompt. Default is false.
     });
     google.accounts.id.renderButton(
       this.btnGoogle.nativeElement, // HTML element
-      { theme: "outline", size: "large" }  // customization attributes
+      { theme: "outline", size: "large", locale: "en" }  // customization attributes
     );
-    // google.accounts.id.prompt(); // also display the One Tap dialog
+    google.accounts.id.prompt(); // also display the One Tap dialog
   }
 
   handleCredentialResponse(response: ResponseInterfaceGoogle) {
@@ -80,7 +78,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.error.message === 'Failed to fetch') {
-            this.errorSwalPopup('Error en la conexión con el servidor');
+            this.errorSwalPopup('Failed to connect to the server');
           } else {
             this.errorSwalPopup(error.error.message);
           }
@@ -88,7 +86,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
         }))
       .subscribe({
         next: (res: ResponseInterface) => {
-          console.log(res);
+          console.log('res', res.user);
+          
+          this._authSvc.userLoggedSignal.set(res.user);
+          console.log('user logged in', this._authSvc.userLoggedComputed());
+          this._router.navigate(['/profile']);
+          this.dialogRef.close();
         }
       });
   }
@@ -103,7 +106,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.error.message === 'Failed to fetch') {
-            this.errorSwalPopup('Error en la conexión con el servidor');
+            this.errorSwalPopup('Failed to connect to the server');
           } else {
             this.errorSwalPopup(error.error.message);
           }
@@ -114,7 +117,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       )
       .subscribe({
         next: (res: ResponseInterface) => {
-          console.log(res);
+          this._authSvc.userLoggedSignal.set(res.user);
         }
       })
   }
