@@ -25,7 +25,7 @@ export class AuthService {
             'email': formData.email,
             'password': formData.password
         };
-        return this.http.post(`${environment.API_AUTH}/login`, body, { headers: httpHeaders })
+        return this.http.post(`${environment.API_AUTH}/auth/login`, body, { headers: httpHeaders })
             .pipe(
                 tap((res: any) => {
                     localStorage.setItem('token', res.token);
@@ -35,7 +35,7 @@ export class AuthService {
 
     loginGoogle(token: string) {
 
-        return this.http.post(`${environment.API_AUTH}/login-google`, { token })
+        return this.http.post(`${environment.API_AUTH}/auth/login-google`, { token })
             .pipe(
                 tap((res: any) => {
                     localStorage.setItem('token', res.token);
