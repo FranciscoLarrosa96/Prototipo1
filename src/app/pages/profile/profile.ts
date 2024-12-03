@@ -11,22 +11,24 @@ declare const google: any;
   imports: [CommonModule, MaterialModule],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
-  providers: [AuthService],
 })
 export class ProfileComponent implements OnInit {
+
+  private _router = inject(Router);
+  private _authSvc = inject(AuthService);
+
+  constructor() { }
+
+
   ngOnInit(): void {
     google.accounts.id.initialize({
       client_id: '684557034764-dot47pevhl29b9q3koj83vnkkim2v26l.apps.googleusercontent.com',
     });
-    //TODO: FIXXXX
-    console.log('user logged in', this._authSvc.userLoggedComputed());
-    
   }
-  private _router = inject(Router);
-  private _authSvc = inject(AuthService);
+
 
   logout() {
-    google.accounts.id.revoke('hunteofgames@gmail.com', () => {
+    google.accounts.id.revoke(this._authSvc.userLoggedComputed().email, () => {
       localStorage.removeItem('token');
     });
     this._router.navigate(['/home']);

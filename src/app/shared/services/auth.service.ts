@@ -6,7 +6,9 @@ import { LoginInterface } from "../../interfaces/login.interface";
 import { User } from "../../interfaces/user.interface";
 
 
-@Injectable()
+@Injectable(
+    { providedIn: 'root' }
+)
 export class AuthService {
     userLoggedSignal = signal<User>({ _id: '', email: '', emailVerified: false, img: '', name: '', role: [] });
     userLoggedComputed = computed(() => this.userLoggedSignal());

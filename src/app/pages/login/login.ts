@@ -20,7 +20,6 @@ declare const google: any;
   imports: [CommonModule, ReactiveFormsModule, MaterialModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
-  providers: [AuthService],
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
@@ -86,11 +85,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
         }))
       .subscribe({
         next: (res: ResponseInterface) => {
-          console.log('res', res.user);
-          
           this._authSvc.userLoggedSignal.set(res.user);
-          console.log('user logged in', this._authSvc.userLoggedComputed());
-          this._router.navigate(['/profile']);
+          this._router.navigate(['profile']);
           this.dialogRef.close();
         }
       });
