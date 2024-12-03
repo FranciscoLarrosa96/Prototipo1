@@ -5,12 +5,10 @@
 
 
 // Define a light theme
-$light-theme: mat.define-theme((
-  color: (
-    use-system-variables: true,
-    system-variables-prefix: sys,
-  ),
-));
+$light-theme: mat.define-theme((color: (use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+    ));
 
 html {
   --sys-primary: rgb(54 94 157);
@@ -116,7 +114,7 @@ html {
   --sys-surface-container-highest: rgb(51 53 57);
 }
 
-html{
+html {
   @include mat.elevation-classes();
   @include mat.app-background();
   @include mat.toolbar-theme($light-theme);
@@ -644,10 +642,14 @@ body.no-scrollbar::-webkit-scrollbar {
   /* Chrome, Safari y Opera */
 }
 
-html{
+html {
   transition: all 300ms ease-in-out;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --main-color: #dd0e7c;
+}

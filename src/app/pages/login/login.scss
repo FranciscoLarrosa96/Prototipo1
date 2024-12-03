@@ -6,6 +6,7 @@
   padding: 30px;
   width: 280px;
   border-radius: 20px;
+  min-height: 480px;
 }
 
 
@@ -48,7 +49,7 @@
 }
 
 .inputForm:focus-within {
-  border: 1.5px solid #2d79f3;
+  border: 1.5px solid var(--main-color);
 }
 
 .flex-row {
@@ -68,14 +69,14 @@
 .span {
   font-size: 14px;
   margin-left: 5px;
-  color: #2d79f3;
+  color: var(--main-color);
   font-weight: 500;
   cursor: pointer;
 }
 
 .button-submit {
   margin: 0;
-  background-color: #dd0e7c;
+  background-color: var(--main-color);
   border: none;
   color: white;
   font-size: 15px;

@@ -3,6 +3,7 @@ export interface User {
     emailVerified: boolean;
     img?: string;
     name: string;
+    lastname?: string;
     role: string[];
     _id: string;
 }

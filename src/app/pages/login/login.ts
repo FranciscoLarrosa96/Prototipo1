@@ -8,10 +8,11 @@ import { AuthService } from '../../shared/services/auth.service';
 import { catchError, finalize, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ResponseInterface, ResponseInterfaceGoogle } from '../../interfaces/response.interface';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import 'animate.css'; //Allows the use of animate.css animations on the alert
 import { Router } from '@angular/router';
+import { RegisterComponent } from '../register/register';
 
 declare const google: any;
 
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   private _checkWindowsSiceService = inject(CheckWindowsSiceService);
   private _authSvc = inject(AuthService);
   private _router = inject(Router);
+  private _matDialog = inject(MatDialog);
   @ViewChild('btnGoogle') btnGoogle!: ElementRef;
 
   constructor(private fb: FormBuilder) {
@@ -114,6 +116,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res: ResponseInterface) => {
           this._authSvc.userLoggedSignal.set(res.user);
+          this._router.navigate(['profile']);
+          this.dialogRef.close();
         }
       })
   }
@@ -138,5 +142,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
         `
       }
     });
+  }
+
+  openRegister() {
+    this._matDialog.open(RegisterComponent, {
+      panelClass: 'register-dialog'
+    });
+    this.dialogRef.close();
   }
 }

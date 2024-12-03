@@ -1,1 +1,31 @@
-<p class="swap">register works!</p>
+<form class="form" [formGroup]="registerForm">
+    <p class="title">Register </p>
+    <p class="message">Signup now and get full access to our app. </p>
+    <div class="flex">
+        <label>
+            <input required="" formControlName="name"  placeholder="" type="text" class="input">
+            <span>Firstname</span>
+        </label>
+
+        <label>
+            <input required="" formControlName="lastName"  placeholder="" type="text" class="input">
+            <span>Lastname</span>
+        </label>
+    </div>
+
+    <label>
+        <input required="" formControlName="email"  placeholder="" type="email" class="input">
+        <span>Email</span>
+    </label>
+
+    <label>
+        <input required="" formControlName="password"  placeholder="" type="password" class="input">
+        <span>Password</span>
+    </label>
+    <label>
+        <input required="" formControlName="confirmPassword"  placeholder="" type="password" class="input">
+        <span>Confirm password</span>
+    </label>
+    <button class="submit" [class.invalid]="this.registerForm.invalid" [disabled]="this.registerForm.invalid">Submit</button>
+    <p class="signin cursor-pointer">Already have an acount ? <span (click)="openLogin()">Login</span> </p>
+</form>

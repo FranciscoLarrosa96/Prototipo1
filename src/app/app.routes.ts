@@ -15,15 +15,19 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/product/product.component').then(component => component.ProductComponent)
     },
     {
-        path : 'cart',
+        path: 'cart',
         loadComponent: () => import('./pages/cart/cart.component').then(component => component.CartComponent)
     },
     {
-        path : 'profile',
+        path: 'profile',
         loadComponent: () => import('./pages/profile/profile').then(component => component.ProfileComponent)
     },
     {
-        path : '**',
-        redirectTo : '/home'
+        path: 'register',
+        loadComponent: () => import('./pages/register/register').then(component => component.RegisterComponent)
+    },
+    {
+        path: '**',
+        redirectTo: '/home'
     }
 ];
