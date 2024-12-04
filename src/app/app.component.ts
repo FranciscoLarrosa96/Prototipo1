@@ -2,7 +2,6 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MaterialModule } from './shared/material.module';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
 import { CheckWindowsSiceService } from './shared/services/check-windows-sice.service';
 import { CommonModule } from '@angular/common';
 import { SharedSignalsService } from './shared/services/shared-signals.service';
@@ -12,7 +11,7 @@ import { LoginComponent } from './pages/login/login';
 import {  HelperService } from './shared/helpers/helper.service';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
+  imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: animationsCustom,

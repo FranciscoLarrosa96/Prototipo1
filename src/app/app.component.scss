@@ -9,6 +9,17 @@ mat-toolbar {
     }
 }
 
+.logoAndTitle{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: 40%;
+    > img {
+        width: 50px;
+        height: auto;
+    }
+}
+
 mat-sidenav-container {
     height: calc(100vh - 56px);
 }
@@ -41,3 +52,14 @@ mat-sidenav, mat-sidenav-content {
   }
 
   
+
+  .buttons{
+    position: absolute;
+    right: 2%;
+  }
+
+  .imgLogo{
+    position: absolute;
+    width: 126px;
+    left: -24px;
+  }

@@ -1,8 +1,10 @@
 <mat-toolbar class="header mat-elevation-z3">
-    <button mat-icon-button (click)="collapsed.set(!collapsed())">
-        <mat-icon class="text-white">menu</mat-icon>
-    </button>
-    <h1 [routerLink]="'/home'">Zona Tecno</h1>
+    <img class="imgLogo" src="assets/logo/logo.webp" alt="">
+    <div class="logoAndTitle">
+        <h1 [routerLink]="'/home'">
+            Zona Tecno
+        </h1>
+    </div>
     <div class="buttons">
         <button mat-icon-button>
             <img src="assets/icons/cart.svg" alt="cart-icon">
@@ -15,11 +17,6 @@
         </button>
     </div>
 </mat-toolbar>
-<mat-sidenav-container>
-    <mat-sidenav class="sideNav" opened mode="side" [style.width]="withSidenav" [disableClose]="true">
-        <app-custom-sidenav [darkMode]="darkMode()" [collapsed]="collapsed()"/>
-    </mat-sidenav>
-    <mat-sidenav-content [style.margin-left]="withSidenavContent" class="sidenavContent" [class.sidenavOpen]="this.collapsed()" (click)="clickOnContent()">
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<!-- TODO: Sacar sidenav y colocar VERSION -->
+
+<router-outlet></router-outlet>
