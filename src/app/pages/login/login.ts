@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import 'animate.css'; //Allows the use of animate.css animations on the alert
 import { Router } from '@angular/router';
 import { RegisterComponent } from '../register/register';
+import { HelperService } from '../../shared/helpers/helper.service';
 
 declare const google: any;
 
@@ -21,6 +22,7 @@ declare const google: any;
   imports: [CommonModule, ReactiveFormsModule, MaterialModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
+  providers: [HelperService]
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   private _authSvc = inject(AuthService);
   private _router = inject(Router);
   private _matDialog = inject(MatDialog);
+  private _helperSvc = inject(HelperService);
   @ViewChild('btnGoogle') btnGoogle!: ElementRef;
 
   constructor(private fb: FormBuilder) {
@@ -79,9 +82,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.error.message === 'Failed to fetch') {
-            this.errorSwalPopup('Failed to connect to the server');
+            this._helperSvc.errorSwalPopup('Failed to connect to the server');
           } else {
-            this.errorSwalPopup(error.error.message);
+            this._helperSvc.errorSwalPopup(error.error.message);
           }
           return throwError(() => error.error.message);
         }))
@@ -104,9 +107,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.error.message === 'Failed to fetch') {
-            this.errorSwalPopup('Failed to connect to the server');
+            this._helperSvc.errorSwalPopup('Failed to connect to the server');
           } else {
-            this.errorSwalPopup(error.error.message);
+            this._helperSvc.errorSwalPopup(error.error.message);
           }
           return throwError(() => error.error.message);
         }))
@@ -122,32 +125,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
       })
   }
 
-  errorSwalPopup(message: string) {
-    Swal.fire({
-      title: 'Error',
-      text: message,
-      icon: 'error',
-      showClass: {
-        popup: `
-          animate__animated
-          animate__fadeInUp
-          animate__faster
-        `
-      },
-      hideClass: {
-        popup: `
-          animate__animated
-          animate__fadeOutDown
-          animate__faster
-        `
-      }
-    });
-  }
+
 
   openRegister() {
     this._matDialog.open(RegisterComponent, {
       panelClass: 'register-dialog'
     });
     this.dialogRef.close();
+    this._helperSvc.fixErrorFocus();
   }
 }

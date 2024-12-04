@@ -9,12 +9,14 @@ import { SharedSignalsService } from './shared/services/shared-signals.service';
 import { animationsCustom } from './animations';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './pages/login/login';
+import {  HelperService } from './shared/helpers/helper.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, MaterialModule, ReactiveFormsModule, CustomSidenavComponent, CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  animations: animationsCustom
+  animations: animationsCustom,
+  providers: [HelperService]
 })
 export class AppComponent {
   title = 'Zona Tecno';
@@ -27,6 +29,7 @@ export class AppComponent {
   private sharedSignalSvc = inject(SharedSignalsService);
   private _matDialog = inject(MatDialog);
   private _router = inject(Router);
+  private _helperSvc = inject(HelperService);
 
   /**
  * Detect changes in the device size
@@ -66,8 +69,7 @@ export class AppComponent {
         panelClass: 'login-dialog',
         data: { name: 'Login' }
       });
-      const buttonElement = document.activeElement as HTMLElement; // Get the currently focused element
-      buttonElement.blur(); // Remove focus from the button
+      this._helperSvc.fixErrorFocus();
     }
   }
 

@@ -4,6 +4,7 @@ import { environment } from "../../../environments/environment";
 import { tap } from "rxjs";
 import { LoginInterface } from "../../interfaces/login.interface";
 import { User } from "../../interfaces/user.interface";
+import { ResponseInterface } from "../../interfaces/response.interface";
 
 
 @Injectable(
@@ -25,9 +26,9 @@ export class AuthService {
             'email': formData.email,
             'password': formData.password
         };
-        return this.http.post(`${environment.API_AUTH}/auth/login`, body, { headers: httpHeaders })
+        return this.http.post<ResponseInterface>(`${environment.API_AUTH}/auth/login`, body, { headers: httpHeaders })
             .pipe(
-                tap((res: any) => {
+                tap((res: ResponseInterface) => {
                     localStorage.setItem('token', res.token);
                 })
             );
@@ -35,9 +36,22 @@ export class AuthService {
 
     loginGoogle(token: string) {
 
-        return this.http.post(`${environment.API_AUTH}/auth/login-google`, { token })
+        return this.http.post<ResponseInterface>(`${environment.API_AUTH}/auth/login-google`, { token })
             .pipe(
-                tap((res: any) => {
+                tap((res: ResponseInterface) => {
+                    localStorage.setItem('token', res.token);
+                })
+            );
+    }
+
+    reggisterUser(formData: User) {
+        const httpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+
+        return this.http.post<ResponseInterface>(`${environment.API_AUTH}/auth/register`, formData, { headers: httpHeaders })
+            .pipe(
+                tap((res: ResponseInterface) => {
                     localStorage.setItem('token', res.token);
                 })
             );

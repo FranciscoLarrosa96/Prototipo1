@@ -26,6 +26,6 @@
         <input required="" formControlName="confirmPassword"  placeholder="" type="password" class="input">
         <span>Confirm password</span>
     </label>
-    <button class="submit" [class.invalid]="this.registerForm.invalid" [disabled]="this.registerForm.invalid">Submit</button>
+    <button class="submit" [class.invalid]="this.registerForm.invalid" [disabled]="this.registerForm.invalid" (click)="registerUser()">Submit</button>
     <p class="signin cursor-pointer">Already have an acount ? <span (click)="openLogin()">Login</span> </p>
 </form>
