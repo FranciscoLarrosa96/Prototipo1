@@ -111,6 +111,13 @@
   color: #fff;
   font-size: 16px;
   transform: .3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  >mat-spinner {
+    height: 30px !important;
+    width: 30px !important;
+  }
 }
 
 .submit:hover {

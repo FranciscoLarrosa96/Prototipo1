@@ -9,7 +9,6 @@ import { catchError, finalize, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ResponseInterface, ResponseInterfaceGoogle } from '../../interfaces/response.interface';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import Swal from 'sweetalert2';
 import 'animate.css'; //Allows the use of animate.css animations on the alert
 import { Router } from '@angular/router';
 import { RegisterComponent } from '../register/register';
