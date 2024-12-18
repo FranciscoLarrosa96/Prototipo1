@@ -23,6 +23,7 @@ export const routes: Routes = [
         path: 'profile',
         canActivate: [AuthGuard],
         loadComponent: () => import('./pages/profile/profile').then(component => component.ProfileComponent)
+        //TODO: RESOLVE profile logged user
     },
     {
         path: 'register',
