@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, effect, inject, OnInit } from '@angular/core';
 import { MaterialModule } from '../../shared/material.module';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
@@ -12,17 +12,18 @@ declare const google: any;
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, AfterViewInit {
 
-  effectUser = effect(() => {
-    this._authSvc.userLoggedComputed();
-    console.log('userLoggedComputed', this._authSvc.userLoggedComputed());
-    
-  });
   private _router = inject(Router);
   private _authSvc = inject(AuthService);
 
   constructor() { }
+  
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      console.log('userLoggedComputed', this._authSvc.userLoggedComputed());
+    }, 100);
+  }
 
 
   ngOnInit(): void {
