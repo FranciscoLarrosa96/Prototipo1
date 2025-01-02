@@ -3,6 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { User } from "../../interfaces/user.interface";
 import { AuthService } from "./auth.service";
+import { ResolveFn } from "@angular/router";
 
 @Injectable(
     {
@@ -30,3 +31,6 @@ export class UserService {
             });
     }
 }
+
+
+export const userResolve: ResolveFn<any>= () => {return inject(UserService).getUserInfo();};

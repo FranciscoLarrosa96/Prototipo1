@@ -1,5 +1,5 @@
 import { CommonModule, JsonPipe } from '@angular/common';
-import { AfterViewInit, Component, effect, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MaterialModule } from '../../shared/material.module';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
@@ -13,19 +13,14 @@ declare const google: any;
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })
-export class ProfileComponent implements OnInit, AfterViewInit {
+export class ProfileComponent implements OnInit {
   userLogged!: User;
   private _router = inject(Router);
-  private _authSvc = inject(AuthService);
+   _authSvc = inject(AuthService);
 
   constructor() { }
   //TODO:"Arreglar probar llamar service en un resolve router"
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      console.log('userLoggedComputed', this._authSvc.userLoggedComputed());
-      this.userLogged = this._authSvc.userLoggedComputed();
-    }, 100);
-  }
+
 
 
   ngOnInit(): void {

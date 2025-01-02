@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { userResolve } from './shared/services/user.service';
 
 export const routes: Routes = [
     {
@@ -22,8 +23,10 @@ export const routes: Routes = [
     {
         path: 'profile',
         canActivate: [AuthGuard],
-        loadComponent: () => import('./pages/profile/profile').then(component => component.ProfileComponent)
-        //TODO: RESOLVE profile logged user
+        loadComponent: () => import('./pages/profile/profile').then(component => component.ProfileComponent),
+        resolve: {
+            userLogged : userResolve
+        }
     },
     {
         path: 'register',

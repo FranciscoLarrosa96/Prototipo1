@@ -1,6 +1,6 @@
 <div class="profileContainer">
   <p>
-    {{this.userLogged | json}}
+    {{ this._authSvc.userLoggedComputed()| json}}
   </p>
 </div>
 
